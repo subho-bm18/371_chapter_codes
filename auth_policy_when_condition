@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-admins-only
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: my-api
+  action: ALLOW
+  rules:
+  - when:
+    - key: request.auth.claims[role]
+      values: ["admin"]
