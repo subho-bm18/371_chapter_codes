@@ -1,0 +1,5 @@
+defaultConfig:
+  proxyMetadata:
+    ISTIO_META_ENABLE_DEBUG: "true"
+  accessLogFile: /dev/stdout
+  accessLogFormat: json
