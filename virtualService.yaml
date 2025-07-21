@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: checkout-service
+spec:
+  hosts:
+  - checkout.example.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: checkout
+    retries:
+      attempts: 3
+      perTryTimeout: 1s
+      retryOn: gateway-error,connect-failure,refused-stream
+    timeout: 2s
