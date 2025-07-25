@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: payments-destination
+spec:
+  host: payments.global.svc.cluster.local
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 3
+    loadBalancer:
+      localityLbSetting:
+        enabled: true
+        failover:
+        - from: us-east1
+          to: us-west1
+        - from: us-west1
+          to: us-east1
