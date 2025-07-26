@@ -1,0 +1,4 @@
+retries:
+  attempts: 3
+  perTryTimeout: 1s
+timeout: 2s
